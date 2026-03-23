@@ -1,4 +1,6 @@
 "use client";
+
+import { Loader2 } from "lucide-react";
 import { useFormStatus } from "react-dom";
 
 export function SubmitButton() {
@@ -9,6 +11,7 @@ export function SubmitButton() {
       className="bg-blue-600 text-white py-2 px-5 rounded-lg "
       disabled={pending}
     >
+      {pending && <Loader2 className="w-4 h-4 animate-spin" />}
       {pending ? "Adding..." : "Add Task"}
     </button>
   );
