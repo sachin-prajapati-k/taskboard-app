@@ -1,9 +1,17 @@
+import { prisma } from "@/lib/prisma";
 import Image from "next/image";
 
 export default function Home() {
   async function addTask(formData: FormData) {
     "use server";
     const Task = formData.get("task")?.toString();
+
+    if (!Task || Task.trim() === "") return;
+    await prisma.task.create({
+      data: {
+        title: Task,
+      },
+    });
     console.log(Task);
   }
   return (
